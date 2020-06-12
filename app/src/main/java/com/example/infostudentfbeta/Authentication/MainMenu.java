@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.infostudentfbeta.Chat.Main_Chat;
 import com.example.infostudentfbeta.MainActivity;
 import com.example.infostudentfbeta.Mapa.MapsActivity;
 import com.example.infostudentfbeta.R;
@@ -197,13 +198,17 @@ public class MainMenu extends AppCompatActivity {
                         case R.id.nav_map:
                             startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                             finish();
-                        /*case R.id.nav_services:
+                        /*case R.id.nav_services: */
                         case R.id.nav_chat:
-                        case R.id.nav_profile: */
+                            startActivity(new Intent(getApplicationContext(), Main_Chat.class));
+                            finish();
+                        //case R.id.nav_profile:
                     }
 
                     return true;
                 }
             };
+
+    //
 
 }

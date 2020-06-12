@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.infostudentfbeta.Authentication.MainMenu;
+import com.example.infostudentfbeta.Chat.Main_Chat;
 import com.example.infostudentfbeta.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.FirebaseApp;
@@ -101,8 +102,10 @@ public class MapsActivity extends AppCompatActivity {
                         /*case R.id.nav_map:
                             startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                             finish();
-                        case R.id.nav_services:
-                        case R.id.nav_chat: */
+                        case R.id.nav_services: */
+                        case R.id.nav_chat:
+                            startActivity(new Intent(getApplicationContext(), Main_Chat.class));
+                            finish();
                         case R.id.nav_profile:
                             startActivity(new Intent(getApplicationContext(), MainMenu.class));
                             finish();

@@ -3,6 +3,7 @@ package com.example.infostudentfbeta.Chat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,9 +12,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.infostudentfbeta.Authentication.MainMenu;
+import com.example.infostudentfbeta.Mapa.MapsActivity;
 import com.example.infostudentfbeta.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -55,6 +60,11 @@ public class Main_Chat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__chat);
+
+        BottomNavigationView bottomnav = findViewById(R.id.bottom_navigation);
+        bottomnav.setSelectedItemId(R.id.nav_chat);
+        bottomnav.setOnNavigationItemSelectedListener(navlistener);
+
         e1 = (EditText) findViewById(R.id.editText);
         l1 = (ListView) findViewById(R.id.listView);
         arrayList = new ArrayList<>();
@@ -134,4 +144,23 @@ public class Main_Chat extends AppCompatActivity {
         reference.updateChildren(map);
 
     }
+
+    public BottomNavigationView.OnNavigationItemSelectedListener navlistener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()){
+                        case R.id.nav_map:
+                            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                            finish();
+                        /*case R.id.nav_services:
+                        case R.id.nav_chat: */
+                        case R.id.nav_profile:
+                            startActivity(new Intent(getApplicationContext(), MainMenu.class));
+                            finish();
+                    }
+
+                    return true;
+                }
+            };
 }
