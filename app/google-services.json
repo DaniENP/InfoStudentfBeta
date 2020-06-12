@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "225009843279",
+    "firebase_url": "https://infostudentfbeta-cc27a.firebaseio.com",
+    "project_id": "infostudentfbeta-cc27a",
+    "storage_bucket": "infostudentfbeta-cc27a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225009843279:android:d6bdb10ccff9c5836dbe3a",
+        "android_client_info": {
+          "package_name": "com.example.infostudentfbeta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225009843279-eg8lrkiho27q9p5lsgrorbi9370krqdk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.infostudentfbeta",
+            "certificate_hash": "03b18ff945cc1af7cfaa7b30fd04507f5eb8daa0"
+          }
+        },
+        {
+          "client_id": "225009843279-ge1e5029rq20gtdfj7m3d004msh9m93g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnBQ95so8dPJZeuEbE94S7aIoRjBJPIlQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225009843279-ge1e5029rq20gtdfj7m3d004msh9m93g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
