@@ -149,16 +149,16 @@ public class Main_Chat extends AppCompatActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()){
+                    /*switch (item.getItemId()){
                         case R.id.nav_map:
                             startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                             finish();
-                        /*case R.id.nav_services:
-                        case R.id.nav_chat: */
+                        case R.id.nav_services:
+                        case R.id.nav_chat:
                         case R.id.nav_profile:
                             startActivity(new Intent(getApplicationContext(), MainMenu.class));
                             finish();
-                    }
+                    }*/
 
                     return true;
                 }
