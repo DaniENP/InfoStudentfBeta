@@ -24,7 +24,14 @@
         </activity>
 
         <activity android:name=".Chat.chatroom"></activity>
-        <activity android:name=".Chat.Main_Chat" />
+        <activity android:name=".Chat.Main_Chat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".Authentication.Register">
 
         </activity>
@@ -39,7 +46,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCkDWXthuVRp4-EpMtdTteFhVsWh8TDuI0" />
+            android:value="@string/api_string"/>
     </application>
 
 </manifest>

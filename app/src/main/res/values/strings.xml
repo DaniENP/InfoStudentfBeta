@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">InfoStudentfBeta</string>
+    <string name="app_name">InfoStudentf</string>
     <string name="no_estas_registrado_haz_click_aqui">¿No estas registrado? Haz click aqui</string>
+    <string name="api_string">AIzaSyAWisTW-Ip5zEf93GJHj5TV-S2G__kWzAk</string>
 </resources>

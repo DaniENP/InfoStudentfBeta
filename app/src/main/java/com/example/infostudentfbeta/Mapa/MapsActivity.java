@@ -24,6 +24,7 @@ public class MapsActivity extends AppCompatActivity {
 
     TextView tvMensaje;
 
+
     private static final long MIN_TIME = 60000;
 
     @Override
@@ -103,9 +104,9 @@ public class MapsActivity extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                             finish();
                         case R.id.nav_services: */
-                        case R.id.nav_chat:
+                        /*case R.id.nav_chat:
                             startActivity(new Intent(getApplicationContext(), Main_Chat.class));
-                            finish();
+                            finish();*/
                         case R.id.nav_profile:
                             startActivity(new Intent(getApplicationContext(), MainMenu.class));
                             finish();
