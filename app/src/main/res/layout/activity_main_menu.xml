@@ -217,8 +217,8 @@
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_navigation"
         android:background="#FFFFFF"
-        app:itemTextColor="#2196f3"
-        app:itemIconTint="#2196f3"/>
+        app:itemTextColor="#62dbd7"
+        app:itemIconTint="#62dbd7"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

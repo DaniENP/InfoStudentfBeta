@@ -1,11 +1,7 @@
 package com.example.infostudentfbeta.Mapa;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -22,7 +18,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -75,7 +70,6 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
         }
 
         getMapAsync(this);
-
         return rootView;
     }
 
@@ -114,25 +108,25 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
 
         mgooglemap.addMarker(new MarkerOptions().position(latLngActual).title("Mi posición actual"));
 
-        mgooglemap.addMarker(new MarkerOptions().position(Bibliotecacentral).title("Biblioteca Gabriel Garcia Marquez").snippet("Información Biblioteca central")
+        mgooglemap.addMarker(new MarkerOptions().position(Bibliotecacentral).title("Biblioteca Gabriel Garcia Marquez").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_biblioteca)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DivisiondeRegistroyMatricula).title("División de registro y matrícula / Polideportivo").snippet("Información División de registro y matrícula")
+        mgooglemap.addMarker(new MarkerOptions().position(DivisiondeRegistroyMatricula).title("División de registro y matrícula / Polideportivo").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_registroymatricula)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(CafeteriaCentral).title("Cafeteria central").snippet("Información Cafeteria Central")
+        mgooglemap.addMarker(new MarkerOptions().position(CafeteriaCentral).title("Cafeteria central").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_cafeteriacentral)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(CADE).title("Centro de Atención de Estudiantes Ingeniería").snippet("Información CADE")
+        mgooglemap.addMarker(new MarkerOptions().position(CADE).title("Centro de Atención de Estudiantes Ingeniería").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_cade)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(LaboratioriosIng).title("Laboratorios Ingeniería").snippet("Información Laboratorios Ingeniería")
+        mgooglemap.addMarker(new MarkerOptions().position(LaboratioriosIng).title("Laboratorios Ingeniería").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_labing)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(canchas).title("Canchas").snippet("Información Canchas")
+        mgooglemap.addMarker(new MarkerOptions().position(canchas).title("Canchas").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_canchas)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(estadio).title("Estadio Alfonso López Pumarejo").snippet("Información Estadio")
+        mgooglemap.addMarker(new MarkerOptions().position(estadio).title("Estadio Alfonso López Pumarejo").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_estadio)));
 
         UiSettings settings = mgooglemap.getUiSettings();
@@ -140,31 +134,15 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
         settings.setZoomControlsEnabled(true);
 
         mgooglemap.setMyLocationEnabled(true);
+
     }
 
     @Override
     public void onInfoWindowClick(final Marker marker) {
-        final AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
-        builder1.setMessage("Informame")
-                .setCancelable(true)
-                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                    public void onClick (@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id){
-                        /*switch (marker.getSnippet()){
-                            case "InformacionBiblioteca":
-                        }*/
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        dialog.cancel();
-
-                    }
-
-                });
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("Determinar ruta")
+        builder.setMessage(marker.getSnippet())
                 .setCancelable(true)
-                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     public void onClick (@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id){
                         calculateDirections(marker);
                         dialog.dismiss();
@@ -181,9 +159,8 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
 
         final AlertDialog alert = builder.create();
         alert.show();
-        final AlertDialog alert1 = builder1.create();
-        alert1.show();
     }
+
 
     private void calculateDirections(Marker marker){
         Log.d(TAG, "calculateDirections: calculating directions.");
@@ -240,13 +217,12 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
                         ));
                     }
                     Polyline polyline =mgooglemap.addPolyline(new PolylineOptions().addAll(newDecodedPath));
-                    polyline.setColor(ContextCompat.getColor(getActivity(), R.color.Blue));
+                    polyline.setColor(ContextCompat.getColor(getActivity(), R.color.Paleta));
                     polyline.setClickable(true);
 
                 }
             }
         });
     }
-
 
 }

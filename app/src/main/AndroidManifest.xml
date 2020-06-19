@@ -13,28 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
 
+        <activity android:name=".Chat.chatroom" />
+        <activity android:name=".Authentication.Register" />
+        <activity android:name=".SplashScreen.SplashScreen"
+            android:theme="@style/SplashScreen">
 
-
-        <activity android:name=".Chat.chatroom"></activity>
-        <activity android:name=".Authentication.Register" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-        <activity android:name=".Chat.Main_Chat" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Chat.Main_Chat" />
+        <activity android:name=".DigitalServices.DigitalActivity" />
+        <activity android:name=".NavigationDrawer.DrawerActivity" />
         <activity android:name=".Mapa.MapsActivity" />
         <activity android:name=".Authentication.EditProfile" />
         <activity android:name=".Authentication.Login" />

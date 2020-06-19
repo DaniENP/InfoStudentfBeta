@@ -2,4 +2,11 @@
     <string name="app_name">InfoStudentf</string>
     <string name="no_estas_registrado_haz_click_aqui">¿No estas registrado? Haz click aqui</string>
     <string name="api_string">AIzaSyAWisTW-Ip5zEf93GJHj5TV-S2G__kWzAk</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="tab_text_1">Sia</string>
+    <string name="tab_text_2">Sinsu</string>
+    <string name="tab_text_3">Siun</string>
+    <string name="tab_text_4">Sibu</string>
 </resources>

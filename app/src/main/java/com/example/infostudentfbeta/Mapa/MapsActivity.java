@@ -8,6 +8,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,13 +18,16 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.infostudentfbeta.Authentication.MainMenu;
 import com.example.infostudentfbeta.Chat.Main_Chat;
+import com.example.infostudentfbeta.DigitalServices.DigitalActivity;
+import com.example.infostudentfbeta.NavigationDrawer.DrawerActivity;
 import com.example.infostudentfbeta.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.FirebaseApp;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 public class MapsActivity extends AppCompatActivity {
 
     TextView tvMensaje;
+    Button botonnavdrawer;
 
 
     private static final long MIN_TIME = 60000;
@@ -33,12 +38,21 @@ public class MapsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_maps);
 
         BottomNavigationView bottomnav = findViewById(R.id.bottom_navigation);
+        bottomnav.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         bottomnav.setSelectedItemId(R.id.nav_map);
         bottomnav.setOnNavigationItemSelectedListener(navlistener);
 
 
-
+        botonnavdrawer = findViewById(R.id.buttonNavDrawer);
         tvMensaje = findViewById(R.id.tvMensaje);
+
+        botonnavdrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), DrawerActivity.class));
+                finish();
+            }
+        });
 
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED
@@ -100,19 +114,24 @@ public class MapsActivity extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()){
-                        /*case R.id.nav_map:
-                            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                        case R.id.nav_services:
+                            startActivity(new Intent(getApplicationContext(), DigitalActivity.class));
                             finish();
-                        case R.id.nav_services: */
-                        /*case R.id.nav_chat:
+                            break;
+                        case R.id.nav_chat:
                             startActivity(new Intent(getApplicationContext(), Main_Chat.class));
-                            finish();*/
+                            finish();
+                            break;
                         case R.id.nav_profile:
                             startActivity(new Intent(getApplicationContext(), MainMenu.class));
                             finish();
+                            break;
                     }
 
                     return true;
                 }
             };
+
+
+
 }

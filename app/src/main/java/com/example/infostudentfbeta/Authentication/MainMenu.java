@@ -18,12 +18,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.infostudentfbeta.Chat.Main_Chat;
-import com.example.infostudentfbeta.MainActivity;
+import com.example.infostudentfbeta.DigitalServices.DigitalActivity;
 import com.example.infostudentfbeta.Mapa.MapsActivity;
 import com.example.infostudentfbeta.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -55,6 +56,7 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         BottomNavigationView bottomnav = findViewById(R.id.bottom_navigation);
+        bottomnav.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         bottomnav.setSelectedItemId(R.id.nav_profile);
         bottomnav.setOnNavigationItemSelectedListener(navlistener);
 
@@ -198,11 +200,15 @@ public class MainMenu extends AppCompatActivity {
                         case R.id.nav_map:
                             startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                             finish();
-                        /*case R.id.nav_services: */
-                        /*case R.id.nav_chat:
+                            break;
+                        case R.id.nav_services:
+                            startActivity(new Intent(getApplicationContext(), DigitalActivity.class));
+                            finish();
+                            break;
+                        case R.id.nav_chat:
                             startActivity(new Intent(getApplicationContext(), Main_Chat.class));
-                            finish();*/
-                        //case R.id.nav_profile:
+                            finish();
+                            break;
                     }
 
                     return true;

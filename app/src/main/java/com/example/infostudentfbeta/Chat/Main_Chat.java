@@ -16,9 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.infostudentfbeta.Authentication.MainMenu;
+import com.example.infostudentfbeta.DigitalServices.DigitalActivity;
 import com.example.infostudentfbeta.Mapa.MapsActivity;
 import com.example.infostudentfbeta.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -62,6 +64,7 @@ public class Main_Chat extends AppCompatActivity {
         setContentView(R.layout.activity_main__chat);
 
         BottomNavigationView bottomnav = findViewById(R.id.bottom_navigation);
+        bottomnav.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         bottomnav.setSelectedItemId(R.id.nav_chat);
         bottomnav.setOnNavigationItemSelectedListener(navlistener);
 
@@ -149,16 +152,20 @@ public class Main_Chat extends AppCompatActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    /*switch (item.getItemId()){
+                    switch (item.getItemId()){
                         case R.id.nav_map:
                             startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                             finish();
+                            break;
                         case R.id.nav_services:
-                        case R.id.nav_chat:
+                            startActivity(new Intent(getApplicationContext(), DigitalActivity.class));
+                            finish();
+                            break;
                         case R.id.nav_profile:
                             startActivity(new Intent(getApplicationContext(), MainMenu.class));
                             finish();
-                    }*/
+                            break;
+                    }
 
                     return true;
                 }
