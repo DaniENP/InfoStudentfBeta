@@ -3,7 +3,6 @@ package com.example.infostudentfbeta.NavigationDrawer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -12,10 +11,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.infostudentfbeta.Authentication.Login;
-import com.example.infostudentfbeta.InformationFragments.ChatFragment;
-import com.example.infostudentfbeta.InformationFragments.MessageFragment;
-import com.example.infostudentfbeta.InformationFragments.ProfileFragment;
+import com.example.infostudentfbeta.InformationFragments.BibliotecasFragment;
+import com.example.infostudentfbeta.InformationFragments.DivisionFragment;
+import com.example.infostudentfbeta.InformationFragments.BienestarFragment;
 import com.example.infostudentfbeta.Mapa.MapsActivity;
 import com.example.infostudentfbeta.R;
 import com.google.android.material.navigation.NavigationView;
@@ -44,35 +42,32 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new MessageFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_message);
+                    new DivisionFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_división);
         }
 
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
         switch (item.getItemId()){
-            case R.id.nav_message:
+            case R.id.nav_división:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new MessageFragment()).commit();
+                        new DivisionFragment()).commit();
                 break;
-            case R.id.nav_chat:
+            case R.id.nav_bienestar:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ChatFragment()).commit();
+                        new BienestarFragment()).commit();
                 break;
-            case R.id.nav_profile:
+            case R.id.nav_bibliotecas:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ProfileFragment()).commit();
+                        new BibliotecasFragment()).commit();
                 break;
-            case R.id.nav_share:
-                Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
-            case R.id.nav_send:
+            case R.id.nav_mapa:
                 startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                 finish();
+                break;
         }
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

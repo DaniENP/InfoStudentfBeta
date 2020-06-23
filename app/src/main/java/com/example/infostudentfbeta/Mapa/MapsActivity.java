@@ -90,9 +90,9 @@ public class MapsActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000 );
             return;
         }
-
-        //services.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,MIN_TIME,1,local);
-        //services.requestLocationUpdates(LocationManager.GPS_PROVIDER,MIN_TIME,1,local);
+        services.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,MIN_TIME,1,local);
+        services.requestLocationUpdates(LocationManager.GPS_PROVIDER,MIN_TIME,1,local);
+        services.removeUpdates(local);
         tvMensaje.setText("Localización agregada");
 
 

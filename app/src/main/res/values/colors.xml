@@ -6,5 +6,7 @@
     <color name="White">#FFFFFF</color>
     <color name="Paleta">#62dbd7</color>
     <color name="Black">#000000</color>
+    <color name="Gray">#CDCDCD</color>
+    <color name="LightBlue">#95fff3</color>
 
 </resources>

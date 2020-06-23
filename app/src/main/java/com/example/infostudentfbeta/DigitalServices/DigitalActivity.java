@@ -34,46 +34,12 @@ public class DigitalActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
-        /*BottomNavigationView bottomnavdigital = findViewById(R.id.bottom_navigation_digital);
-        bottomnavdigital.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-        bottomnavdigital.setOnNavigationItemSelectedListener(nav_digitallistener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_digital,
-                new Siafragment()).commit();*/
-
         BottomNavigationView bottomnavmenu = findViewById(R.id.bottom_navigation);
         bottomnavmenu.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         bottomnavmenu.setSelectedItemId(R.id.nav_services);
         bottomnavmenu.setOnNavigationItemSelectedListener(nav_menulistener);
 
     }
-
-    /*BottomNavigationView.OnNavigationItemSelectedListener nav_digitallistener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment =  null;
-
-                    switch (item.getItemId()){
-                        case R.id.nav_sia:
-                            selectedFragment = new Siafragment();
-                            break;
-                        case R.id.nav_sinsu:
-                            selectedFragment = new Sinsufragment();
-                            break;
-                        case R.id.nav_siun:
-                            selectedFragment = new Siunfragment();
-                            break;
-                        case R.id.nav_sibu:
-                            selectedFragment = new Sibufragment();
-                            break;
-                    }
-
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_digital,
-                            selectedFragment).commit();
-
-                    return true;
-                }
-            };*/
 
     public BottomNavigationView.OnNavigationItemSelectedListener nav_menulistener=
             new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -36,7 +36,6 @@ public class Localizacion implements LocationListener {
                 "Longitud" + location.getLongitude();
 
         tvMensaje.setText(texto);
-
         mapa(location.getLatitude(), location.getLongitude());
 
 

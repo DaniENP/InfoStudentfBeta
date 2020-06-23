@@ -3,37 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <item
+        android:id="@+id/nav_un"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Conoce tu universidad" />
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_message"
-            android:icon="@drawable/ic_message"
-            android:title="Biblioteca Central" />
-        <item
-            android:id="@+id/nav_chat"
-            android:icon="@drawable/ic_chat"
-            android:title="CADE" />
-        <item
-            android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_person"
-            android:title="Comedor Central" />
 
+        <menu>
+            <item
+                android:id="@+id/nav_división"
+                android:icon="@drawable/ic_divisionregistro"
+                android:title="División de registro" />
+
+            <item
+                android:id="@+id/nav_bienestar"
+                android:icon="@drawable/ic_bienestar"
+                android:title="Bienestar" />
+
+            <item
+                android:id="@+id/nav_bibliotecas"
+                android:icon="@drawable/ic_bibliotecas"
+                android:title="Bibliotecas" />
+        </menu>
 
     </group>
 
-    <item android:title="Communicate">
+    <item>
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_send"
+                android:id="@+id/nav_mapa"
+                android:icon="@drawable/ic_location_on_black_24dp"
                 android:title="Volver a mapa" />
         </menu>
 
     </item>
-
 
 
 </menu>

@@ -19,10 +19,6 @@ public class Sibufragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_sibu,container,false);
-        WebView webView = (WebView)v.findViewById(R.id.webview_sibu);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("http://www.sibu.unal.edu.co/home.jsf");
         return v;
     }
 }
