@@ -19,10 +19,6 @@ public class Sinsufragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_sinsu,container,false);
-        WebView webView = (WebView)v.findViewById(R.id.webview_sinsu);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("www.sinsu.unal.edu.co/MIHIMS/Account/Login.aspx");
         return v;
     }
 }

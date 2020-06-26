@@ -1,6 +1,7 @@
 package com.example.infostudentfbeta.Mapa;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,13 +11,16 @@ import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.infostudentfbeta.Authentication.MainMenu;
+import com.example.infostudentfbeta.Authentication.Register;
 import com.example.infostudentfbeta.Chat.Main_Chat;
 import com.example.infostudentfbeta.DigitalServices.DigitalActivity;
 import com.example.infostudentfbeta.NavigationDrawer.DrawerActivity;
@@ -28,6 +32,7 @@ public class MapsActivity extends AppCompatActivity {
 
     TextView tvMensaje;
     Button botonnavdrawer;
+    ImageButton botonreset;
 
 
     private static final long MIN_TIME = 60000;
@@ -42,7 +47,7 @@ public class MapsActivity extends AppCompatActivity {
         bottomnav.setSelectedItemId(R.id.nav_map);
         bottomnav.setOnNavigationItemSelectedListener(navlistener);
 
-
+        botonreset = findViewById(R.id.btn_reset_map);
         botonnavdrawer = findViewById(R.id.buttonNavDrawer);
         tvMensaje = findViewById(R.id.tvMensaje);
 
@@ -50,6 +55,14 @@ public class MapsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), DrawerActivity.class));
+                finish();
+            }
+        });
+
+        botonreset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                 finish();
             }
         });
@@ -77,7 +90,7 @@ public class MapsActivity extends AppCompatActivity {
         final boolean gpsEnabled = services.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
         if(!gpsEnabled){
-
+            Toast.makeText(MapsActivity.this, "Por favor active su GPS.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             startActivity(intent);
         }
@@ -90,9 +103,8 @@ public class MapsActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000 );
             return;
         }
-        services.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,MIN_TIME,1,local);
-        services.requestLocationUpdates(LocationManager.GPS_PROVIDER,MIN_TIME,1,local);
-        services.removeUpdates(local);
+        //services.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,MIN_TIME,1000000000,local);
+        //services.requestLocationUpdates(LocationManager.GPS_PROVIDER,MIN_TIME,100000000,local);
         tvMensaje.setText("Localización agregada");
 
 
