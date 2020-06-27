@@ -1,7 +1,9 @@
 package com.example.infostudentfbeta.Mapa;
 
+import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,12 +20,12 @@ public class Localizacion implements LocationListener {
     TextView tvMensaje;
 
 
-    public MapsActivity getMapsActivity(){
+    public MapsActivity getMapsActivity() {
         return MapsActivity;
 
     }
 
-    public void setMapsActivity(MapsActivity MapsActivity, TextView tvMensaje){
+    public void setMapsActivity(MapsActivity MapsActivity, TextView tvMensaje) {
         this.MapsActivity = MapsActivity;
         this.tvMensaje = tvMensaje;
     }
@@ -31,17 +33,17 @@ public class Localizacion implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
 
-        String texto = "Mi Ubicación es : \n" +
+        /*String texto = "Mi Ubicación es : \n" +
                 "Latitud" + location.getLatitude() + "\n" +
                 "Longitud" + location.getLongitude();
 
-        tvMensaje.setText(texto);
-        mapa(location.getLatitude(), location.getLongitude());
+        tvMensaje.setText(texto);*/
 
+        mapa(location.getLatitude(), location.getLongitude());
 
     }
 
-    public void mapa(double lat, double lon){
+    public void mapa(double lat, double lon) {
 
         FragmentMaps fragment = new FragmentMaps();
 
@@ -62,15 +64,14 @@ public class Localizacion implements LocationListener {
 
         switch (status) {
             case LocationProvider.AVAILABLE:
-                Log.d("debug","LocationProvider.AVALIABLE");
+                Log.d("debug", "LocationProvider.AVALIABLE");
                 break;
             case LocationProvider.OUT_OF_SERVICE:
-                Log.d("debug","LocationProvider.OUT_OF_SERVICE");
+                Log.d("debug", "LocationProvider.OUT_OF_SERVICE");
                 break;
             case LocationProvider.TEMPORARILY_UNAVAILABLE:
-                Log.d("debug","LocationProvider.TEMPORARILY_UNAVALIABLE");
+                Log.d("debug", "LocationProvider.TEMPORARILY_UNAVALIABLE");
                 break;
-
 
 
         }

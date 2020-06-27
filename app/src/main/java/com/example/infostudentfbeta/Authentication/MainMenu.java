@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.infostudentfbeta.Chat.Main_Chat;
+import com.example.infostudentfbeta.CurrentLocation.MapslocationActivity;
 import com.example.infostudentfbeta.DigitalServices.DigitalActivity;
 import com.example.infostudentfbeta.Mapa.MapsActivity;
 import com.example.infostudentfbeta.R;
@@ -198,7 +199,7 @@ public class MainMenu extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()){
                         case R.id.nav_map:
-                            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MapslocationActivity.class));
                             finish();
                             break;
                         case R.id.nav_services:

@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.infostudentfbeta.CurrentLocation.MapslocationActivity;
 import com.example.infostudentfbeta.InformationFragments.BibliotecasFragment;
 import com.example.infostudentfbeta.InformationFragments.DivisionFragment;
 import com.example.infostudentfbeta.InformationFragments.BienestarFragment;
@@ -64,7 +65,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                         new BibliotecasFragment()).commit();
                 break;
             case R.id.nav_mapa:
-                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                startActivity(new Intent(getApplicationContext(), MapslocationActivity.class));
                 finish();
                 break;
         }
@@ -78,7 +79,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             drawer.closeDrawer(GravityCompat.START);
 
         }else {
-            startActivity(new Intent(getApplicationContext(),MapsActivity.class));
+            startActivity(new Intent(getApplicationContext(), MapslocationActivity.class));
             finish();
         }
     }

@@ -4,10 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -18,6 +17,7 @@ import android.view.ViewGroup;
 
 import androidx.core.content.ContextCompat;
 
+import com.example.infostudentfbeta.CurrentLocation.PolylineData;
 import com.example.infostudentfbeta.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -51,19 +51,25 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
     private GeoApiContext mGeoApiContext = null;
     private ArrayList<PolylineData> mPolylinesData = new ArrayList<>();
     private Marker mSelectedMarker = null;
-    
-    public FragmentMaps() {
+    MapsActivity mapsActivity;
 
+    double latfrag, lonfrag;
+
+
+    public FragmentMaps() {
     }
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
         View rootView = super.onCreateView(layoutInflater, viewGroup, bundle);
 
-        if (getArguments() == null) {
+        mapsActivity = new MapsActivity();
+
+
+        /*if (getArguments() == null) {
             this.lat = 4.635147;
             this.lon = -74.081095;
-        }
+        }*/
 
         if (getArguments() != null) {
             this.lat = getArguments().getDouble("lat");
@@ -84,7 +90,7 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
 
 
     private void resetSelectedMarker() {
-        if(mSelectedMarker != null){
+        if (mSelectedMarker != null) {
             mSelectedMarker.setSnippet("Determinar ruta");
             mSelectedMarker = null;
         }
@@ -94,15 +100,14 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+
         mgooglemap = googleMap;
 
         mgooglemap.setOnPolylineClickListener(this);
 
         mgooglemap.setOnInfoWindowClickListener(this);
 
-        LatLng prueba = new LatLng(4.743315, -74.045261);
-
-        LatLng latLngActual = new LatLng(lat, lon);
+        LatLng latLngActual = new LatLng(lat,lon);
 
         LatLng CentrarMapa = new LatLng(4.636755, -74.083459);
 
@@ -172,7 +177,7 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
 
         mgooglemap.getUiSettings().setZoomControlsEnabled(true);
 
-        mgooglemap.addMarker(new MarkerOptions().position(latLngActual).title("Mi posición actual").icon(bitmapDescriptorFromVector(this,R.mipmap.ic_icon_inicio))));
+        mgooglemap.addMarker(new MarkerOptions().position(latLngActual).title("Mi posición actual").icon(bitmapDescriptorFromVector(getContext(), R.drawable.ic_icon_inicio)));
 
         mgooglemap.addMarker(new MarkerOptions().position(Bibliotecacentral).title("Biblioteca Gabriel Garcia Marquez").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_biblioteca)));
@@ -264,9 +269,6 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
         mgooglemap.addMarker(new MarkerOptions().position(DepartamentoCineyTv).title("Departamento de Cine y Televisión").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentocineytv)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(prueba).title("more polylines?").snippet("Determinar ruta"));
-
-
         UiSettings settings = mgooglemap.getUiSettings();
 
         settings.setZoomControlsEnabled(true);
@@ -275,14 +277,14 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
 
     }
 
-    private BitmapDescriptor bitmapDescriptorFromVector (Context context, int vectorResId){
+    private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
 
-        Drawable vectorDrawable = ContextCompat.getDrawable(context,vectorResId);
-        vectorDrawable.setBounds(0,0,vectorDrawable.getIntrinsicWidth(),
+        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
+        vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(),
                 vectorDrawable.getIntrinsicHeight());
 
         Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(),
-                vectorDrawable.getIntrinsicHeight(),Bitmap.Config.ARGB_8888);
+                vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
 
         Canvas canvas = new Canvas(bitmap);
         vectorDrawable.draw(canvas);
@@ -328,9 +330,9 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
         );
         DirectionsApiRequest directions = new DirectionsApiRequest(mGeoApiContext);
 
-        directions.alternatives(true);
+        directions.alternatives(false);
         directions.origin(
-                new com.google.maps.model.LatLng(lat, lon)
+                new com.google.maps.model.LatLng(latfrag, lonfrag)
         );
         Log.d(TAG, "calculateDirections: destination: " + destination.toString());
         directions.destination(destination).setCallback(new PendingResult.Callback<DirectionsResult>() {
@@ -421,7 +423,7 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
                         .snippet("Duration:" + polylineData.getLeg().duration)
                 );*/
 
-                mSelectedMarker.setSnippet("Duración:   "+ polylineData.getLeg().duration);
+                mSelectedMarker.setSnippet("Duración:   " + polylineData.getLeg().duration);
                 mSelectedMarker.showInfoWindow();
 
             } else {

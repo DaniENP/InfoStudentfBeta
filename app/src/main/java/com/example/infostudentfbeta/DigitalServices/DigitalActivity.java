@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.infostudentfbeta.Authentication.MainMenu;
 import com.example.infostudentfbeta.Chat.Main_Chat;
+import com.example.infostudentfbeta.CurrentLocation.MapslocationActivity;
 import com.example.infostudentfbeta.DigitalFragments.Siafragment;
 import com.example.infostudentfbeta.DigitalFragments.Sibufragment;
 import com.example.infostudentfbeta.DigitalFragments.Sinsufragment;
@@ -47,7 +48,7 @@ public class DigitalActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()){
                         case R.id.nav_map:
-                            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MapslocationActivity.class));
                             finish();
                             break;
                         case R.id.nav_profile:

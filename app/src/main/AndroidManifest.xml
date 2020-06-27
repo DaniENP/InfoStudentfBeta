@@ -32,6 +32,7 @@
         <activity android:name=".Authentication.EditProfile" />
         <activity android:name=".Authentication.Login" />
         <activity android:name=".Authentication.MainMenu" />
+        <activity android:name=".CurrentLocation.MapslocationActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
