@@ -26,8 +26,12 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.infostudentfbeta.Authentication.MainMenu;
+import com.example.infostudentfbeta.Authentication.Register;
 import com.example.infostudentfbeta.Chat.Main_Chat;
 import com.example.infostudentfbeta.DigitalServices.DigitalActivity;
 import com.example.infostudentfbeta.Mapa.MapsActivity;
@@ -72,11 +76,14 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
     private static final int REQUEST_CODE = 101;
 
     private static final String TAG = "MapslocationActivity";
-    double lat, lon;
     GoogleMap mgooglemap;
     private GeoApiContext mGeoApiContext = null;
     private ArrayList<PolylineData> mPolylinesData = new ArrayList<>();
+    private ArrayList<Marker> mMarkers = new ArrayList<>();
     private Marker mSelectedMarker = null;
+
+    String[] ubicaciones = {"Biblioteca Gabriel Garcia Marquez","División de registro y matrícula / Polideportivo","Cafeteria central","Centro de Atención de Estudiantes Ingeniería","Laboratorios Ingeniería","Canchas","Estadio Alfoso López Pumarejo","Facultad de Ingeniería","Eficio Takeuchi","Facultad de Derecho","Facultad de Medicina","Enfermeria","Departamento de Farmacia","Departamento de Quimica","Edificio de Ciencia y Tecnología CyT","Departamento de Sociologia","Facultad de Ciencias Económicas","Facultad de Odontología","Aulas de Ciencias Humanas","Departamento de Agronomía","Departamento de Lenguas Extranjeras","Postgrados de Ciencias Humanas","Aulas de Ingeniería","Facultad de Medicina Veterinaria y Zootecnia","Edificio Manuel Ancizar. Departamento de Geociencias","Edificio Francisco de Paula Santander. Diseño Gráfico","Edificio Antonio Nariño. Departamento de Ingeniería civil y Agrícola","Conservatorio de Música","Departamento de Cine y Televisión"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +97,9 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
         botonreset = findViewById(R.id.btn_reset_map);
         botonnavdrawer = findViewById(R.id.buttonNavDrawer);
+
+        mMarkers.clear();
+        mMarkers = new ArrayList<>();
 
         botonnavdrawer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +127,15 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
         }
 
     }
+
+    /*public void calculateDirectionsfromListView(){
+        for(Marker marker: mMarkers){
+            if marker.getTitle().equals();
+
+        }
+
+    }*/
+
     public BottomNavigationView.OnNavigationItemSelectedListener navlistener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -182,173 +201,176 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
         mgooglemap.setOnInfoWindowClickListener(this);
 
-        LatLng latLngActual = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
-
-        LatLng CentrarMapa = new LatLng(4.636755, -74.083459);
-
-        LatLng Bibliotecacentral = new LatLng(4.635287, -74.083213);
-
-        LatLng DivisiondeRegistroyMatricula = new LatLng(4.634913, -74.082886);
-
-        LatLng CafeteriaCentral = new LatLng(4.634521, -74.082673);
-
-        LatLng CADE = new LatLng(4.637980, -74.081423);
-
-        LatLng LaboratioriosIng = new LatLng(4.639203, -74.082696);
-
-        LatLng canchas = new LatLng(4.640111, -74.08445);
-
-        LatLng estadio = new LatLng(4.640324, -74.086445);
-
-        LatLng AuditorioLeon = new LatLng(4.635694, -74.082346);
-
-        LatLng FacultadIngenieria = new LatLng(4.637257, -74.082829);
-
-        LatLng EdificioTakeuchi = new LatLng(4.637910, -74.082178);
-
-        LatLng FacultadDerecho = new LatLng(4.635407, -74.083808);
-
-        LatLng FacultadMedicina = new LatLng(4.636358, -74.084425);
-
-        LatLng Enfermeria = new LatLng(4.635409, -74.084727);
-
-        LatLng DepartamentoFarmacia = new LatLng(4.637208, -74.083834);
-
-        LatLng DepartamentoQuimica = new LatLng(4.637550, -74.083971);
-
-        LatLng CyT = new LatLng(4.638002, -74.084756);
-
-        LatLng DepartamentoSociologia = new LatLng(4.634457, -74.083869);
-
-        LatLng FacultadCienciasEconomicas = new LatLng(4.637158, -74.080753);
-
-        LatLng FacultadOdontologia = new LatLng(4.634495, -74.085245);
-
-        LatLng AulasCieniasHumanas = new LatLng(4.633995, -74.084707);
-
-        LatLng DepartamentoAgronomia = new LatLng(4.635961, -74.087253);
-
-        LatLng DepartamentoLenguasExtranjeras = new LatLng(4.632915, -74.084465);
-
-        LatLng PostgradosCienciasHumanas = new LatLng(4.634120, -74.086439);
-
-        LatLng AulasIngenieria = new LatLng(4.638428, -74.083662);
-
-        LatLng FacultadMedicinaVeterinariaZootecnia = new LatLng(4.636079, -74.085379);
-
-        LatLng DepartamentoGeociencias = new LatLng(4.633723, -74.085475);
-
-        LatLng DepartamentoIngenieriaCivilAgricola = new LatLng(4.633556, -74.083997);
-
-        LatLng DiseñoGrafico = new LatLng(4.633289, -74.083207);
-
-        LatLng ConservatorioMusica = new LatLng(4.635764, -74.081283);
-
-        LatLng DepartamentoCineyTv = new LatLng(4.640494, -74.085578);
-
         float zoom = 16;
 
-        mgooglemap.moveCamera(CameraUpdateFactory.newLatLngZoom(CentrarMapa, zoom));
+        //Marker marker = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.634763,-74.021282)).title("test"));
+
+        //MarkerOptions markerOptions = new MarkerOptions().position(new LatLng(4.635763,-74.081282)).title("test");
+        //MarkerOptions markerOptions1 = new MarkerOptions().position(new LatLng(4.635763,-74.081282)).title("test");
+        //mgooglemap.addMarker(markerOptions);
+
+        mgooglemap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(4.636755, -74.083459), zoom));
 
         mgooglemap.getUiSettings().setZoomControlsEnabled(true);
 
-        mgooglemap.addMarker(new MarkerOptions().position(latLngActual).title("Mi posición actual").icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.ic_icon_inicio)));
+        mgooglemap.addMarker(new MarkerOptions().position(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude())).title("Mi posición actual").icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.ic_icon_inicio)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(Bibliotecacentral).title("Biblioteca Gabriel Garcia Marquez").snippet("Determinar ruta")
+        Marker BibliotecaCentral = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635287, -74.083213)).title("Biblioteca Gabriel Garcia Marquez").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_biblioteca)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DivisiondeRegistroyMatricula).title("División de registro y matrícula / Polideportivo").snippet("Determinar ruta")
-                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_registroymatricula)));
+        mMarkers.add(BibliotecaCentral);
 
-        mgooglemap.addMarker(new MarkerOptions().position(CafeteriaCentral).title("Cafeteria central").snippet("Determinar ruta")
+        Marker DivisiondeRegistro = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.634913, -74.082886)).title("División de registro y matrícula / Polideportivo").snippet("Determinar ruta")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_registroymatricula)));
+        mMarkers.add(DivisiondeRegistro);
+
+        Marker CafeteriaCentral = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.634521, -74.082673)).title("Cafeteria central").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_cafeteriacentral)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(CADE).title("Centro de Atención de Estudiantes Ingeniería").snippet("Determinar ruta")
+        mMarkers.add(CafeteriaCentral);
+
+        Marker CADE = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.637980, -74.081423)).title("Centro de Atención de Estudiantes Ingeniería").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_cade)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(LaboratioriosIng).title("Laboratorios Ingeniería").snippet("Determinar ruta")
+        mMarkers.add(CADE);
+
+        Marker LaboratoriosIngenieria = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.639203, -74.082696)).title("Laboratorios Ingeniería").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_labing)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(canchas).title("Canchas").snippet("Determinar ruta")
+        mMarkers.add(LaboratoriosIngenieria);
+
+        Marker Canchas = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.640111, -74.08445)).title("Canchas").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_canchas)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(estadio).title("Estadio Alfonso López Pumarejo").snippet("Determinar ruta")
+        mMarkers.add(Canchas);
+
+        Marker Estadio = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.640324, -74.086445)).title("Estadio Alfonso López Pumarejo").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_estadio)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(AuditorioLeon).title("Auditorio León de Greiff").snippet("Determinar ruta")
+        mMarkers.add(Estadio);
+
+        Marker AuditorioLeon = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635694, -74.082346)).title("Auditorio León de Greiff").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_auditorioleon)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(FacultadIngenieria).title("Facultad de Ingeniería").snippet("Determinar ruta")
+        mMarkers.add(AuditorioLeon);
+
+        Marker FacultadIngenieria = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.637257, -74.082829)).title("Facultad de Ingeniería").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_facultadingenieria)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(EdificioTakeuchi).title("Eficio Takeuchi").snippet("Determinar ruta")
+        mMarkers.add(FacultadIngenieria);
+
+        Marker EdificioTakeuchi = mgooglemap.addMarker(new MarkerOptions().position( new LatLng(4.637910, -74.082178)).title("Eficio Takeuchi").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_edificiotakeuchi)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(FacultadDerecho).title("Facultad de Derecho").snippet("Determinar ruta")
+        mMarkers.add(EdificioTakeuchi);
+
+        Marker FacultadDerecho = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635407, -74.083808)).title("Facultad de Derecho").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_facultadderecho)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(FacultadMedicina).title("Facultad de Medicina").snippet("Determinar ruta")
+        mMarkers.add(FacultadDerecho);
+
+        Marker FacultadMedicina = mgooglemap.addMarker(new MarkerOptions().position( new LatLng(4.636358, -74.084425)).title("Facultad de Medicina").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_facultadmedicina)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(Enfermeria).title("Enfermeria").snippet("Determinar ruta")
+        mMarkers.add(FacultadMedicina);
+
+        Marker Enfermeria = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635409, -74.084727)).title("Enfermeria").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_enfermeria)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DepartamentoFarmacia).title("Departamento de Farmacia").snippet("Determinar ruta")
+        mMarkers.add(Enfermeria);
+
+        Marker DepartamentodeFarmacia = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.637208, -74.083834)).title("Departamento de Farmacia").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentofarmacia)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DepartamentoQuimica).title("Departamento de Quimica").snippet("Determinar ruta")
+        mMarkers.add(DepartamentodeFarmacia);
+
+        Marker DepartamentodeQuimica = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.637550, -74.083971)).title("Departamento de Quimica").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentoquimica)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(CyT).title("Edificio de Ciencia y Tecnología CyT").snippet("Determinar ruta")
+        mMarkers.add(DepartamentodeQuimica);
+
+        Marker EdiciodeCienciayTecnologia = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.638002, -74.084756)).title("Edificio de Ciencia y Tecnología CyT").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_cyt)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DepartamentoSociologia).title("Departamento de Sociologia").snippet("Determinar ruta")
+        mMarkers.add(EdiciodeCienciayTecnologia);
+
+        Marker DepartamentodeSociologia = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.634457, -74.083869)).title("Departamento de Sociologia").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentosociologia)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(FacultadCienciasEconomicas).title("Facultad de Ciencias Económicas").snippet("Determinar ruta")
+        mMarkers.add(DepartamentodeSociologia);
+
+        Marker FacultaddeCienciasEconomicas =mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.637158, -74.080753)).title("Facultad de Ciencias Económicas").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_facultadcienciaseconomicas)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(FacultadOdontologia).title("Facultad de Odontología").snippet("Determinar ruta")
+        mMarkers.add(FacultaddeCienciasEconomicas);
+
+        Marker FacultaddeOdontologia = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.634495, -74.085245)).title("Facultad de Odontología").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_facultadodontologia)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(AulasCieniasHumanas).title("Aulas de Ciencias Humanas").snippet("Determinar ruta")
+        mMarkers.add(FacultaddeOdontologia);
+
+        Marker AulasdecienciasHumanas = mgooglemap.addMarker(new MarkerOptions().position( new LatLng(4.633995, -74.084707)).title("Aulas de Ciencias Humanas").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_aulascienciashumanas)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DepartamentoAgronomia).title("Departamento de Agronomía").snippet("Determinar ruta")
+        mMarkers.add(AulasdecienciasHumanas);
+
+        Marker DepartamentodeAgronomia = mgooglemap.addMarker(new MarkerOptions().position( new LatLng(4.635961, -74.087253)).title("Departamento de Agronomía").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentoagronomia)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DepartamentoLenguasExtranjeras).title("Departamento de Lenguas Extranjeras").snippet("Determinar ruta")
+        mMarkers.add(DepartamentodeAgronomia);
+
+        Marker DepartamentodeLenguasExtranjeras = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.632915, -74.084465)).title("Departamento de Lenguas Extranjeras").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentolenguasextranjeras)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(PostgradosCienciasHumanas).title("Postgrados de Ciencias Humanas").snippet("Determinar ruta")
+        mMarkers.add(DepartamentodeLenguasExtranjeras);
+
+        Marker PostgradosdeCienciasHumanas = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.634120, -74.086439)).title("Postgrados de Ciencias Humanas").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_postgradoscienciashumanas)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(AulasIngenieria).title("Aulas de Ingeniería").snippet("Determinar ruta")
+        mMarkers.add(PostgradosdeCienciasHumanas);
+
+        Marker AulasdeIngenieria = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.638428, -74.083662)).title("Aulas de Ingeniería").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_aulasingenieria)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(FacultadMedicinaVeterinariaZootecnia).title("Facultad de Medicina Veterinaria y Zootecnia").snippet("Determinar ruta")
+        mMarkers.add(AulasdeIngenieria);
+
+        Marker FacultaddeVeterinaria = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.636079, -74.085379)).title("Facultad de Medicina Veterinaria y Zootecnia").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_facultadmedicinaveterinariazootecnia)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DepartamentoGeociencias).title("Edificio Manuel Ancizar. Departamento de Geociencias").snippet("Determinar ruta")
+        mMarkers.add(FacultaddeVeterinaria);
+
+        Marker DepartamentodeGeociencias = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.633723, -74.085475)).title("Edificio Manuel Ancizar. Departamento de Geociencias").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentogeociencias)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DiseñoGrafico).title("Edificio Francisco de Paula Santander. Diseño Gráfico").snippet("Determinar ruta")
+        mMarkers.add(DepartamentodeGeociencias);
+
+        Marker DiseñoGrafico = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.633289, -74.083207)).title("Edificio Francisco de Paula Santander. Diseño Gráfico").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_disenografico)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DepartamentoIngenieriaCivilAgricola).title("Edificio Antonio Nariño. Departamento de Ingeniería civil y Agrícola").snippet("Determinar ruta")
+        mMarkers.add(DiseñoGrafico);
+
+        Marker IngenieriaCivilyAgricola = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.633556, -74.083997)).title("Edificio Antonio Nariño. Departamento de Ingeniería civil y Agrícola").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentoingenieriacivilagricola)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(ConservatorioMusica).title("Conservatorio de Música").snippet("Determinar ruta")
+        mMarkers.add(IngenieriaCivilyAgricola);
+
+        Marker ConservatoriodeMusica = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635764, -74.081283)).title("Conservatorio de Música").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_conservatoriomusica)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DepartamentoCineyTv).title("Departamento de Cine y Televisión").snippet("Determinar ruta")
+        mMarkers.add(ConservatoriodeMusica);
+
+        Marker DepartamentodeCineyTv = mgooglemap.addMarker(new MarkerOptions().position( new LatLng(4.640494, -74.085578)).title("Departamento de Cine y Televisión").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentocineytv)));
+
+        mMarkers.add(DepartamentodeCineyTv);
 
         UiSettings settings = mgooglemap.getUiSettings();
 
         settings.setZoomControlsEnabled(true);
 
         mgooglemap.setMyLocationEnabled(true);
+
+        //Toast.makeText(MapslocationActivity.this, "Numero: " + mMarkers.get(30), Toast.LENGTH_SHORT).show();
 
     }
 
