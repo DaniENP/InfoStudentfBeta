@@ -11,7 +11,7 @@
 
         <menu>
             <item
-                android:id="@+id/nav_división"
+                android:id="@+id/nav_division"
                 android:icon="@drawable/ic_divisionregistro"
                 android:title="División de registro" />
 

@@ -57,7 +57,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new UnFragment()).commit();
                 break;
-            case R.id.nav_división:
+            case R.id.nav_division:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new DivisionFragment()).commit();
                 break;
