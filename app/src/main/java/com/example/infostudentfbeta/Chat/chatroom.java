@@ -22,6 +22,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Class that contains methods for chat functioning
+ */
 public class chatroom extends AppCompatActivity {
     EditText e1;
     TextView t1;
@@ -32,8 +35,10 @@ public class chatroom extends AppCompatActivity {
     String temp_key;
 
 
-
-
+    /**
+     * This method gets chat information and deploys chatroom activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +102,10 @@ public class chatroom extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Method to connect database and save users and messages data
+     * @param v
+     */
     public void send(View v)
     {
         Map<String,Object> map = new HashMap<String,Object>();
@@ -119,6 +128,12 @@ public class chatroom extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Method to get and deploy chat information (mesagges and users) on screen
+     *
+     * @param ss Dtasnapshot from firebase database
+     */
     public void append_chat(DataSnapshot ss)
     {
         String chat_msg;

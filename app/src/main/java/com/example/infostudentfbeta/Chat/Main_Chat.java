@@ -45,6 +45,9 @@ import java.util.Set;
 
 import javax.annotation.Nullable;
 
+/**
+ * Class that contains methods of the chat menu
+ */
 public class Main_Chat extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseUser user;
@@ -62,6 +65,10 @@ public class Main_Chat extends AppCompatActivity {
     private long backPressedTime;
     private Toast backToast;
 
+    /**
+     * Method to get username data, create chat rooms and set it on screen
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +96,11 @@ public class Main_Chat extends AppCompatActivity {
         user = fAuth.getCurrentUser();
         DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            /**
+             * Method to get and check username data
+             * @param documentSnapshot
+             * @param e
+             */
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if(documentSnapshot.exists()){
@@ -127,6 +139,13 @@ public class Main_Chat extends AppCompatActivity {
 
 
         l1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /**
+             * Method to deploy chat room selected by user
+             * @param adapterView
+             * @param view
+             * @param i
+             * @param l
+             */
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
@@ -143,7 +162,10 @@ public class Main_Chat extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Method to add  a chat room and save it on firebase
+     * @param v
+     */
     public void insert_data(View v) {
 
         Map<String, Object> map = new HashMap<>();
@@ -154,6 +176,12 @@ public class Main_Chat extends AppCompatActivity {
 
     public BottomNavigationView.OnNavigationItemSelectedListener navlistener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
+                /**
+                 * Method to navigate between activities
+                 *
+                 * @param item Menu item for the navigation button
+                 * @return return boolean to keep navigation in progress
+                 */
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()){
