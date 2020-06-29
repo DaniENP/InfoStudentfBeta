@@ -411,10 +411,10 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
         mMarkers.add(DepartamentodeGeociencias);
 
-        Marker DiseñoGrafico = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.633289, -74.083207)).title("217.Edificio Francisco de Paula Santander. Diseno Grafico").snippet("Determinar ruta")
+        Marker DisenoGrafico = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.633289, -74.083207)).title("217.Edificio Francisco de Paula Santander. Diseno Grafico").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_disenografico)));
 
-        mMarkers.add(DiseñoGrafico);
+        mMarkers.add(DisenoGrafico);
 
         Marker IngenieriaCivilyAgricola = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.633556, -74.083997)).title("214.Edificio Antonio Narino. Departamento de Ingenieria civil y Agricola").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentoingenieriacivilagricola)));

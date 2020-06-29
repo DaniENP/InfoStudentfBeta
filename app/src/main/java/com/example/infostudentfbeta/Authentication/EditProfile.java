@@ -30,6 +30,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
+/**
+ *This Class contain methods to edit profile user details
+ */
 
 /**
  * This class contains all methods for edit profile user information
