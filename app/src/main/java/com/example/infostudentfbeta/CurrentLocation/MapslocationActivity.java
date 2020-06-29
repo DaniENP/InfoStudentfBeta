@@ -452,7 +452,7 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
     }
 
     /**
-     *
+     * Method to set an icon in each marker.
      * @param context
      * @param vectorResId
      * @return
@@ -503,7 +503,7 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
     }
 
     /**
-     * Method to show dialog after chick on a marker on the map, it can call method to calculate directions.
+     * Method to show dialog after click on a marker on the map, it is able to call method to calculate directions.
      * @param marker marker of a location
      */
     @Override
@@ -664,7 +664,7 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
     }
 
     /**
-     * Method to set zoom configuration to visualize correctly the complete route between the user an the marker (location).
+     * Method to set zoom configuration to visualize correctly the complete route between the user and the marker (location).
      * @param lstLatLngRoute
      */
     public void zoomRoute(List<LatLng> lstLatLngRoute) {
@@ -686,7 +686,7 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
     }
 
     /**
-     * Method to ask the user to exit the app when the user press back.
+     * Method to ask to exit the app when the user presses back.
      */
     @Override
     public void onBackPressed() {

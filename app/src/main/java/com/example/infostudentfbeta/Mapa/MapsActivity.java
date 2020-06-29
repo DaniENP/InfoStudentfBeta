@@ -51,6 +51,10 @@ public class MapsActivity extends AppCompatActivity {
     Button botonnavdrawer;
     ImageButton botonreset;
 
+    /**
+     * Method to instance widget objects and add navlistener to the bottomnavigationview.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +130,12 @@ public class MapsActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method to request for permissions.
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == 1000) {
