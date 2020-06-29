@@ -39,6 +39,10 @@ import com.squareup.picasso.Picasso;
 
 import javax.annotation.Nullable;
 
+/**
+ * This activity class is initialized after user login
+ */
+
 public class MainMenu extends AppCompatActivity {
     private static final int GALLERY_INTENT_CODE = 1023;
     TextView fullName, email, phone, verifyMsg;
@@ -54,6 +58,10 @@ public class MainMenu extends AppCompatActivity {
     private long backPressedTime;
     private Toast backToast;
 
+    /**
+     * Method to get current user information and show it on screen
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +87,10 @@ public class MainMenu extends AppCompatActivity {
 
         StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            /**
+             * Method to get profile image information
+             * @param uri image data
+             */
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(profileImage);
@@ -97,6 +109,11 @@ public class MainMenu extends AppCompatActivity {
             resendCode.setVisibility(View.VISIBLE);
 
             resendCode.setOnClickListener(new View.OnClickListener() {
+                /**
+                 * Method to send email verification for user
+                 *
+                 * @param v view for email verification
+                 */
                 @Override
                 public void onClick(final View v) {
 
@@ -117,6 +134,12 @@ public class MainMenu extends AppCompatActivity {
 
         DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            /**
+             * Method to get user data and set it on screen
+             *
+             * @param documentSnapshot user data
+             * @param e exception
+             */
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if (documentSnapshot.exists()) {
@@ -131,6 +154,11 @@ public class MainMenu extends AppCompatActivity {
         });
 
         resetPassLocal.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method to reset user password
+             *
+             * @param v view for reset password
+             */
             @Override
             public void onClick(View v) {
 
@@ -174,6 +202,10 @@ public class MainMenu extends AppCompatActivity {
         });
 
         changeProfileImage.setOnClickListener(new View.OnClickListener() {
+            /**
+             *  Method to change profile image
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 // open gallery
@@ -189,6 +221,12 @@ public class MainMenu extends AppCompatActivity {
 
     }
 
+    /**
+     * Method to logout
+     *
+     * @param view
+     */
+
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();//logout
         startActivity(new Intent(getApplicationContext(), Login.class));
@@ -198,6 +236,12 @@ public class MainMenu extends AppCompatActivity {
 
     public BottomNavigationView.OnNavigationItemSelectedListener navlistener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
+                /**
+                 * Method to navigate between activities
+                 *
+                 * @param item Menu item for the navigation button
+                 * @return return boolean to keep navigation in progress
+                 */
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
@@ -218,6 +262,7 @@ public class MainMenu extends AppCompatActivity {
                     return true;
                 }
             };
+
 
     @Override
     public void onBackPressed() {

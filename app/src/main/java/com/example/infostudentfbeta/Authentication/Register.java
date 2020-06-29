@@ -29,6 +29,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class that contains methods for user registration
+ */
 public class Register extends AppCompatActivity {
 
 
@@ -42,6 +45,10 @@ public class Register extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userID;
 
+    /**
+     * Method to register a user and save it on firebase
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +73,10 @@ public class Register extends AppCompatActivity {
 
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method to get information typed by the user
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 final String email = mEmail.getText().toString().trim();
@@ -93,6 +104,10 @@ public class Register extends AppCompatActivity {
                 // register the user in firebase
 
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    /**
+                     * Method to create and check user creation and send verification email
+                     * @param task firebase user created task
+                     */
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
@@ -142,6 +157,10 @@ public class Register extends AppCompatActivity {
         });
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method to deploy login activity
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Login.class));

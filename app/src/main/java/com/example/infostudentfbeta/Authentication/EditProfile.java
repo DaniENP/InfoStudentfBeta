@@ -31,6 +31,10 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class contains all methods for edit profile user information
+ */
+
 public class EditProfile extends AppCompatActivity {
 
     public static final String TAG = "TAG";
@@ -41,7 +45,9 @@ public class EditProfile extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseUser user;
     StorageReference storageReference;
-
+    /**
+     *This method gets firebase instances to edit user information.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +71,11 @@ public class EditProfile extends AppCompatActivity {
 
         StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            /**
+             * Method to load current profile image
+             *
+             * @param uri image data in current profile
+             */
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(profileImageView);
@@ -80,6 +91,11 @@ public class EditProfile extends AppCompatActivity {
         });
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * This method edits the information given by the user
+             *
+             * @param v view for edit user information details
+             */
             @Override
             public void onClick(View v) {
                 if(profileFullName.getText().toString().isEmpty() || profileEmail.getText().toString().isEmpty() || profilePhone.getText().toString().isEmpty()){
@@ -107,6 +123,11 @@ public class EditProfile extends AppCompatActivity {
                         Toast.makeText(EditProfile.this, "Email guardado.", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
+                    /**
+                     * Exception Method
+                     *
+                     * @param e
+                     */
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(EditProfile.this,   e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -124,6 +145,13 @@ public class EditProfile extends AppCompatActivity {
         Log.d(TAG, "onCreate: " + fullName + " " + email + " " + phone);
     }
 
+    /**
+     * This method gets image data to use in profile
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -137,10 +165,20 @@ public class EditProfile extends AppCompatActivity {
 
     }
 
+    /**
+     * Method to upload image to firebase storage
+     *
+     * @param imageUri image file
+     */
+
     private void uploadImageToFirebase(Uri imageUri) {
         // uplaod image to firebase storage
         final StorageReference fileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            /**
+             * Method  to load image selectioned by user
+             * @param taskSnapshot
+             */
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -151,6 +189,10 @@ public class EditProfile extends AppCompatActivity {
                 });
             }
         }).addOnFailureListener(new OnFailureListener() {
+            /**
+             * Exception method
+             * @param e
+             */
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getApplicationContext(), "Failed.", Toast.LENGTH_SHORT).show();

@@ -22,7 +22,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
+//*This class contain all methods for login
 public class Login extends AppCompatActivity {
     EditText mEmail,mPassword;
     Button mLoginBtn;
@@ -30,6 +30,10 @@ public class Login extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseAuth fAuth;
 
+    /**
+     * This method gets a firebase instance to check the user data to do the login
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,10 @@ public class Login extends AppCompatActivity {
         forgotTextLink = findViewById(R.id.forgotPassword);
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * This method gets the login information typed by the user
+             * @param v
+             */
             @Override
             public void onClick(View v) {
 
@@ -70,6 +78,10 @@ public class Login extends AppCompatActivity {
                 // authenticate the user
 
                 fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    /**
+                     * Method to check user authentication
+                     * @param task user authentication task
+                     */
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
@@ -87,6 +99,10 @@ public class Login extends AppCompatActivity {
         });
 
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method to deploy register activity
+             * @param v
+             */
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Register.class));
@@ -94,6 +110,10 @@ public class Login extends AppCompatActivity {
         });
 
         forgotTextLink.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method to reset forbidden password
+             * @param v
+             */
             @Override
             public void onClick(View v) {
 
@@ -104,6 +124,11 @@ public class Login extends AppCompatActivity {
                 passwordResetDialog.setView(resetMail);
 
                 passwordResetDialog.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    /**
+                     * Method to extrack the email and send reset link
+                     * @param dialog password reset dialog
+                     * @param which
+                     */
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // extract the email and send reset link
@@ -124,6 +149,11 @@ public class Login extends AppCompatActivity {
                 });
 
                 passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    /**
+                     * Close the password reset dialog
+                     * @param dialog
+                     * @param which
+                     */
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // close the dialog
