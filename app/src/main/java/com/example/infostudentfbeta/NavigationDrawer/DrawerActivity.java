@@ -15,6 +15,7 @@ import com.example.infostudentfbeta.CurrentLocation.MapslocationActivity;
 import com.example.infostudentfbeta.InformationFragments.BibliotecasFragment;
 import com.example.infostudentfbeta.InformationFragments.DivisionFragment;
 import com.example.infostudentfbeta.InformationFragments.BienestarFragment;
+import com.example.infostudentfbeta.InformationFragments.UnFragment;
 import com.example.infostudentfbeta.Mapa.MapsActivity;
 import com.example.infostudentfbeta.R;
 import com.google.android.material.navigation.NavigationView;
@@ -43,8 +44,8 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new DivisionFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_división);
+                    new UnFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_un);
         }
 
     }
@@ -52,6 +53,10 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.nav_un:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new UnFragment()).commit();
+                break;
             case R.id.nav_división:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new DivisionFragment()).commit();

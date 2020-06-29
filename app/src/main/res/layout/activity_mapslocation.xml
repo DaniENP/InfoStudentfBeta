@@ -65,30 +65,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
-        android:background="@color/White"
+        android:background="@drawable/white_border"
         android:id="@+id/relLayout1">
 
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:id="@+id/ic_magnify"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/ic_magnify"
-            />
-
-        <EditText
+        <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@id/ic_magnify"
             android:layout_centerVertical="true"
             android:textSize="15sp"
             android:textColor="@color/Black"
-            android:id="@+id/input_search"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:id="@+id/button_listview"
             android:background="@null"
             android:hint="Busque su Ubicación"
-            android:textColorHint="@color/Gray"/>
+            android:textColorHint="@color/Black"/>
     </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_marginRight="65dp"
+        android:layout_marginLeft="80dp"
+        android:id="@+id/layoutListView"
+        android:layout_width="match_parent"
+        android:layout_height="325dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037"
+        tools:layout_editor_absoluteX="80dp">
+
+        <ListView
+            android:id="@+id/list1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
