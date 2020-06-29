@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
 
 public class MainMenu extends AppCompatActivity {
     private static final int GALLERY_INTENT_CODE = 1023;
-    TextView fullName, email, phone, verifyMsg;
+    TextView fullName, email, verifyMsg;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
@@ -140,7 +140,6 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if (documentSnapshot.exists()) {
-                    phone.setText(documentSnapshot.getString("phone"));
                     fullName.setText(documentSnapshot.getString("fName"));
                     email.setText(documentSnapshot.getString("email"));
 
