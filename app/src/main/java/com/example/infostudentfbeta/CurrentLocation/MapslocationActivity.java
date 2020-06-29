@@ -98,7 +98,7 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
     private SearchView searchView;
 
     private ListView list;
-    private String Locations[] = {"102.Biblioteca Gabriel Garcia Marquez", "103.Cafeteria central", "103.División de registro y matrícula / Polideportivo","104.Auditorio León de Greiff", "201.Facultad de Derecho", "205.Departamento de Sociologia", "210.Facultad de Odontología", "212.Aulas de Ciencias Humanas", "214.Edificio Antonio Nariño. Departamento de Ingeniería civil y Agrícola", "217.Edificio Francisco de Paula Santander. Diseño Gráfico", "224.Edificio Manuel Ancizar. Departamento de Geociencias", "225.Postgrados de Ciencias Humanas", "228.Enfermeria", "231.Departamento de Lenguas Extranjeras", "305.Conservatorio de Música", "310.Facultad de Ciencias Económicas", "401.Facultad de Ingeniería", "404.Eficio Takeuchi", "408.Centro de Atención de Estudiantes Ingeniería", "411.Laboratorios Ingeniería", "450.Departamento de Farmacia", "451.Departamento de Quimica", "453.Aulas de Ingeniería", "454.Edificio de Ciencia y Tecnología CyT", "471.Facultad de Medicina", "481.Facultad de Medicina Veterinaria y Zootecnia", "500.Departamento de Agronomía", "Canchas", "701.Departamento de Cine y Televisión", "731.Estadio Alfonso López Pumarejo"};
+    private String Locations[] = {"102.Biblioteca Gabriel Garcia Marquez", "103.Cafeteria central", "103.Division de registro y matricula / Polideportivo","104.Auditorio Leon de Greiff", "201.Facultad de Derecho", "205.Departamento de Sociologia", "210.Facultad de Odontologia", "212.Aulas de Ciencias Humanas", "214.Edificio Antonio Narino. Departamento de Ingenieria civil y Agricola", "217.Edificio Francisco de Paula Santander. Diseno Grafico", "224.Edificio Manuel Ancizar. Departamento de Geociencias", "225.Postgrados de Ciencias Humanas", "228.Enfermeria", "231.Departamento de Lenguas Extranjeras", "305.Conservatorio de Musica", "310.Facultad de Ciencias Economicas", "401.Facultad de Ingenieria", "404.Eficio Takeuchi", "408.Centro de Atencion de Estudiantes Ingenieria", "411.Laboratorios Ingenieria", "450.Departamento de Farmacia", "451.Departamento de Quimica", "453.Aulas de Ingenieria", "454.Edificio de Ciencia y Tecnología CyT", "471.Facultad de Medicina", "481.Facultad de Medicina Veterinaria y Zootecnia", "500.Departamento de Agronomia", "Canchas", "701.Departamento de Cine y Television", "731.Estadio Alfonso Lopez Pumarejo"};
     private String Intents[] = {"Determinar Ruta a edficio 102", "Determinar Ruta a Cafeteria Central", "Determinar Ruta a edficio 103", "Determinar Ruta a edificio 104", "Determinar Ruta a edficio 201", "Determinar Ruta a edficio 205", "Determinar Ruta a edficio 210", "Determinar Ruta a edficio 212", "Determinar Ruta a edficio 214", "Determinar Ruta a edficio 217", "Determinar Ruta a edficio 224", "Determinar Ruta a edficio 225", "Determinar Ruta a edficio 228", "Determinar Ruta a edficio 231", "Determinar Ruta a edficio 305", "Determinar Ruta a edficio 310", "Determinar Ruta a edficio 401", "Determinar Ruta a edficio 404", "Determinar Ruta a edficio 408", "Determinar Ruta a edficio 411", "Determinar Ruta a edficio 450", "Determinar Ruta a edficio 451", "Determinar Ruta a edficio 453", "Determinar Ruta a edficio 454", "Determinar Ruta a edficio 471", "Determinar Ruta a edficio 481", "Determinar Ruta a edficio 500", "Determinar Ruta a Canchas", "Determinar Ruta a edficio 701", "Determinar Ruta a edficio 731"};
     private int imgs[] = {R.drawable.biblioteca, R.drawable.cafeteriacentral, R.drawable.registroymatricula,R.drawable.auditorioleon, R.drawable.facultadderecho, R.drawable.departamentosociologia, R.drawable.facultadodontologia, R.drawable.aulascienciashumanas, R.drawable.departamentoingenieriacivilagricola, R.drawable.disenografico, R.drawable.departamentogeociencas, R.drawable.postgradoscienciashumanas, R.drawable.enfermeria, R.drawable.departamentolenguasextranjeras, R.drawable.conservatoriomusica, R.drawable.facultadcienciaseconomicas, R.drawable.facultadingenieria, R.drawable.edificiotakeuchi, R.drawable.cade, R.drawable.labing, R.drawable.departamentofarmacia, R.drawable.departamentoquimica, R.drawable.aulasingenieria, R.drawable.cyt, R.drawable.facultadmedicina, R.drawable.facultadmedicinaveterinariazootecnia, R.drawable.departamentoagronomia, R.drawable.canchas, R.drawable.departamentocineytv, R.drawable.estadio};
 
@@ -280,14 +280,14 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
         mgooglemap.getUiSettings().setZoomControlsEnabled(true);
 
-        mgooglemap.addMarker(new MarkerOptions().position(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).title("Mi posición actual").icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.ic_icon_inicio)));
+        mgooglemap.addMarker(new MarkerOptions().position(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).title("Mi posicion actual").icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.ic_icon_inicio)));
 
         Marker BibliotecaCentral = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635287, -74.083213)).title("102.Biblioteca Gabriel Garcia Marquez").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_biblioteca)));
 
         mMarkers.add(BibliotecaCentral);
 
-        Marker DivisiondeRegistro = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.634913, -74.082886)).title("103.División de registro y matrícula / Polideportivo").snippet("Determinar ruta")
+        Marker DivisiondeRegistro = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.634913, -74.082886)).title("103.Division de registro y matricula / Polideportivo").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_registroymatricula)));
         mMarkers.add(DivisiondeRegistro);
 
@@ -296,12 +296,12 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
         mMarkers.add(CafeteriaCentral);
 
-        Marker CADE = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.637980, -74.081423)).title("408.Centro de Atención de Estudiantes Ingeniería").snippet("Determinar ruta")
+        Marker CADE = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.637980, -74.081423)).title("408.Centro de Atencion de Estudiantes Ingenieria").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_cade)));
 
         mMarkers.add(CADE);
 
-        Marker LaboratoriosIngenieria = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.639203, -74.082696)).title("411.Laboratorios Ingeniería").snippet("Determinar ruta")
+        Marker LaboratoriosIngenieria = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.639203, -74.082696)).title("411.Laboratorios Ingenieria").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_labing)));
 
         mMarkers.add(LaboratoriosIngenieria);
@@ -311,17 +311,17 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
         mMarkers.add(Canchas);
 
-        Marker Estadio = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.640324, -74.086445)).title("731.Estadio Alfonso López Pumarejo").snippet("Determinar ruta")
+        Marker Estadio = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.640324, -74.086445)).title("731.Estadio Alfonso Lopez Pumarejo").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_estadio)));
 
         mMarkers.add(Estadio);
 
-        Marker AuditorioLeon = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635694, -74.082346)).title("104.Auditorio León de Greiff").snippet("Determinar ruta")
+        Marker AuditorioLeon = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635694, -74.082346)).title("104.Auditorio Leon de Greiff").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_auditorioleon)));
 
         mMarkers.add(AuditorioLeon);
 
-        Marker FacultadIngenieria = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.637257, -74.082829)).title("401.Facultad de Ingeniería").snippet("Determinar ruta")
+        Marker FacultadIngenieria = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.637257, -74.082829)).title("401.Facultad de Ingenieria").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_facultadingenieria)));
 
         mMarkers.add(FacultadIngenieria);
@@ -366,12 +366,12 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
         mMarkers.add(DepartamentodeSociologia);
 
-        Marker FacultaddeCienciasEconomicas = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.637158, -74.080753)).title("310.Facultad de Ciencias Económicas").snippet("Determinar ruta")
+        Marker FacultaddeCienciasEconomicas = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.637158, -74.080753)).title("310.Facultad de Ciencias Economicas").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_facultadcienciaseconomicas)));
 
         mMarkers.add(FacultaddeCienciasEconomicas);
 
-        Marker FacultaddeOdontologia = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.634495, -74.085245)).title("210.Facultad de Odontología").snippet("Determinar ruta")
+        Marker FacultaddeOdontologia = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.634495, -74.085245)).title("210.Facultad de Odontologia").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_facultadodontologia)));
 
         mMarkers.add(FacultaddeOdontologia);
@@ -381,7 +381,7 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
         mMarkers.add(AulasdecienciasHumanas);
 
-        Marker DepartamentodeAgronomia = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635961, -74.087253)).title("500.Departamento de Agronomía").snippet("Determinar ruta")
+        Marker DepartamentodeAgronomia = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635961, -74.087253)).title("500.Departamento de Agronomia").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentoagronomia)));
 
         mMarkers.add(DepartamentodeAgronomia);
@@ -396,7 +396,7 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
         mMarkers.add(PostgradosdeCienciasHumanas);
 
-        Marker AulasdeIngenieria = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.638428, -74.083662)).title("453.Aulas de Ingeniería").snippet("Determinar ruta")
+        Marker AulasdeIngenieria = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.638428, -74.083662)).title("453.Aulas de Ingenieria").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_aulasingenieria)));
 
         mMarkers.add(AulasdeIngenieria);
@@ -411,22 +411,22 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
         mMarkers.add(DepartamentodeGeociencias);
 
-        Marker DiseñoGrafico = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.633289, -74.083207)).title("217.Edificio Francisco de Paula Santander. Diseño Gráfico").snippet("Determinar ruta")
+        Marker DiseñoGrafico = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.633289, -74.083207)).title("217.Edificio Francisco de Paula Santander. Diseno Grafico").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_disenografico)));
 
         mMarkers.add(DiseñoGrafico);
 
-        Marker IngenieriaCivilyAgricola = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.633556, -74.083997)).title("214.Edificio Antonio Nariño. Departamento de Ingeniería civil y Agrícola").snippet("Determinar ruta")
+        Marker IngenieriaCivilyAgricola = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.633556, -74.083997)).title("214.Edificio Antonio Narino. Departamento de Ingenieria civil y Agricola").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentoingenieriacivilagricola)));
 
         mMarkers.add(IngenieriaCivilyAgricola);
 
-        Marker ConservatoriodeMusica = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635764, -74.081283)).title("305.Conservatorio de Música").snippet("Determinar ruta")
+        Marker ConservatoriodeMusica = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.635764, -74.081283)).title("305.Conservatorio de Musica").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_conservatoriomusica)));
 
         mMarkers.add(ConservatoriodeMusica);
 
-        Marker DepartamentodeCineyTv = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.640494, -74.085578)).title("701.Departamento de Cine y Televisión").snippet("Determinar ruta")
+        Marker DepartamentodeCineyTv = mgooglemap.addMarker(new MarkerOptions().position(new LatLng(4.640494, -74.085578)).title("701.Departamento de Cine y Television").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentocineytv)));
 
         mMarkers.add(DepartamentodeCineyTv);
