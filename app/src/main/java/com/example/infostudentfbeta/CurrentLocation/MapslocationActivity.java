@@ -102,7 +102,10 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
     private String Intents[] = {"Determinar Ruta a edficio 102", "Determinar Ruta a Cafeteria Central", "Determinar Ruta a edficio 103", "Determinar Ruta a edificio 104", "Determinar Ruta a edficio 201", "Determinar Ruta a edficio 205", "Determinar Ruta a edficio 210", "Determinar Ruta a edficio 212", "Determinar Ruta a edficio 214", "Determinar Ruta a edficio 217", "Determinar Ruta a edficio 224", "Determinar Ruta a edficio 225", "Determinar Ruta a edficio 228", "Determinar Ruta a edficio 231", "Determinar Ruta a edficio 305", "Determinar Ruta a edficio 310", "Determinar Ruta a edficio 401", "Determinar Ruta a edficio 404", "Determinar Ruta a edficio 408", "Determinar Ruta a edficio 411", "Determinar Ruta a edficio 450", "Determinar Ruta a edficio 451", "Determinar Ruta a edficio 453", "Determinar Ruta a edficio 454", "Determinar Ruta a edficio 471", "Determinar Ruta a edficio 481", "Determinar Ruta a edficio 500", "Determinar Ruta a Canchas", "Determinar Ruta a edficio 701", "Determinar Ruta a edficio 731"};
     private int imgs[] = {R.drawable.biblioteca, R.drawable.cafeteriacentral, R.drawable.registroymatricula,R.drawable.auditorioleon, R.drawable.facultadderecho, R.drawable.departamentosociologia, R.drawable.facultadodontologia, R.drawable.aulascienciashumanas, R.drawable.departamentoingenieriacivilagricola, R.drawable.disenografico, R.drawable.departamentogeociencas, R.drawable.postgradoscienciashumanas, R.drawable.enfermeria, R.drawable.departamentolenguasextranjeras, R.drawable.conservatoriomusica, R.drawable.facultadcienciaseconomicas, R.drawable.facultadingenieria, R.drawable.edificiotakeuchi, R.drawable.cade, R.drawable.labing, R.drawable.departamentofarmacia, R.drawable.departamentoquimica, R.drawable.aulasingenieria, R.drawable.cyt, R.drawable.facultadmedicina, R.drawable.facultadmedicinaveterinariazootecnia, R.drawable.departamentoagronomia, R.drawable.canchas, R.drawable.departamentocineytv, R.drawable.estadio};
 
-
+    /**
+     * Method to instance widget objects and add navlistener to the bottomnavigationview.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -226,7 +229,9 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
                 }
             };
 
-
+    /**
+     *Method to ask for permissions and last user location to show map on screen.
+      */
     private void fetchLastLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED
@@ -252,7 +257,12 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
         });
     }
 
-
+    /**
+     * Maps configuration
+     *
+     * Zoom activation, camera location, method where are added all markers for application (specifying titles and icons for each location added).
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         /*LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
@@ -441,6 +451,12 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
     }
 
+    /**
+     *
+     * @param context
+     * @param vectorResId
+     * @return
+     */
     private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
 
         Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
@@ -457,7 +473,12 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
     }
 
-
+    /**
+     * Method to request for permissions.
+      * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -471,6 +492,9 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
 
     }
 
+    /**
+     *
+     */
     private void resetSelectedMarker() {
         if (mSelectedMarker != null) {
             mSelectedMarker.setSnippet("Determinar ruta");
@@ -478,6 +502,10 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
         }
     }
 
+    /**
+     * Method to show dialog after chick on a marker on the map, it can call method to calculate directions.
+     * @param marker marker of a location
+     */
     @Override
     public void onInfoWindowClick(Marker marker) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -511,6 +539,10 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
         }*/
     }
 
+    /**
+     * Method to define parameters according to the marker and deploys information to go to the location(estimated time, distance)
+     * @param marker
+     */
     private void calculateDirections(Marker marker) {
         Log.d(TAG, "calculateDirections: calculating directions.");
 
@@ -544,6 +576,10 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
         });
     }
 
+    /**
+     * Method to add and deploy polylines (route indicator generated)  on maps screen.
+     * @param result
+     */
     private void addPolylinesToMap(final DirectionsResult result) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
@@ -591,6 +627,10 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
         });
     }
 
+    /**
+     * Method to get and deploy information of the different routes generated by add polylines.
+     * @param polyline
+     */
     @Override
     public void onPolylineClick(Polyline polyline) {
         int index = 0;
@@ -623,6 +663,10 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
         }
     }
 
+    /**
+     * Method to set zoom configuration to visualize correctly the complete route between the user an the marker (location).
+     * @param lstLatLngRoute
+     */
     public void zoomRoute(List<LatLng> lstLatLngRoute) {
 
         if (mgooglemap == null || lstLatLngRoute == null || lstLatLngRoute.isEmpty()) return;
@@ -641,6 +685,9 @@ public class MapslocationActivity extends FragmentActivity implements OnMapReady
         );
     }
 
+    /**
+     * Method to ask the user to exit the app when the user press back.
+     */
     @Override
     public void onBackPressed() {
         if (list.getAdapter() != null) {

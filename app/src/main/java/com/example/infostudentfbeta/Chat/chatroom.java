@@ -103,7 +103,7 @@ public class chatroom extends AppCompatActivity {
     }
 
     /**
-     * Method to connect database and save users and messages data
+     * Method to get database reference and save users and messages data
      * @param v
      */
     public void send(View v)

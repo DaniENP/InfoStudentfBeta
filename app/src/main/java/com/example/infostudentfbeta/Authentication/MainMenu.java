@@ -111,7 +111,6 @@ public class MainMenu extends AppCompatActivity {
             resendCode.setOnClickListener(new View.OnClickListener() {
                 /**
                  * Method to send email verification for user
-                 *
                  * @param v view for email verification
                  */
                 @Override
@@ -136,7 +135,6 @@ public class MainMenu extends AppCompatActivity {
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             /**
              * Method to get user data and set it on screen
-             *
              * @param documentSnapshot user data
              * @param e exception
              */
@@ -156,7 +154,6 @@ public class MainMenu extends AppCompatActivity {
         resetPassLocal.setOnClickListener(new View.OnClickListener() {
             /**
              * Method to reset user password
-             *
              * @param v view for reset password
              */
             @Override
@@ -223,7 +220,6 @@ public class MainMenu extends AppCompatActivity {
 
     /**
      * Method to logout
-     *
      * @param view
      */
 
@@ -233,12 +229,10 @@ public class MainMenu extends AppCompatActivity {
         finish();
     }
 
-
     public BottomNavigationView.OnNavigationItemSelectedListener navlistener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 /**
                  * Method to navigate between activities
-                 *
                  * @param item Menu item for the navigation button
                  * @return return boolean to keep navigation in progress
                  */

@@ -14,6 +14,9 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.infostudentfbeta.Authentication.Register;
 
+/**
+ * Class to implement the splash screen when the user open the app.
+ */
 public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

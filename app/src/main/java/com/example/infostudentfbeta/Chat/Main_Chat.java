@@ -66,7 +66,7 @@ public class Main_Chat extends AppCompatActivity {
     private Toast backToast;
 
     /**
-     * Method to get username data, create chat rooms and set it on screen
+     * Method to get username data, create chat rooms and set it on screen.
      * @param savedInstanceState
      */
     @Override
@@ -140,7 +140,7 @@ public class Main_Chat extends AppCompatActivity {
 
         l1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             /**
-             * Method to deploy chat room selected by user
+             * Method to deploy chat room selected by user.
              * @param adapterView
              * @param view
              * @param i
@@ -163,7 +163,7 @@ public class Main_Chat extends AppCompatActivity {
 
 
     /**
-     * Method to add  a chat room and save it on firebase
+     * Method to add  a chat room and save it on firebase.
      * @param v
      */
     public void insert_data(View v) {
@@ -177,7 +177,7 @@ public class Main_Chat extends AppCompatActivity {
     public BottomNavigationView.OnNavigationItemSelectedListener navlistener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 /**
-                 * Method to navigate between activities
+                 * Method to navigate between activities.
                  *
                  * @param item Menu item for the navigation button
                  * @return return boolean to keep navigation in progress

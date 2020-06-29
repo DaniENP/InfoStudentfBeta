@@ -30,9 +30,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
-/**
- *This Class contain methods to edit profile user details
- */
 
 /**
  * This class contains all methods for edit profile user information
@@ -48,8 +45,10 @@ public class EditProfile extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseUser user;
     StorageReference storageReference;
+
     /**
-     *This method gets firebase instances to edit user information.
+     * This method gets firebase instances to edit user information.
+     * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +75,6 @@ public class EditProfile extends AppCompatActivity {
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             /**
              * Method to load current profile image
-             *
              * @param uri image data in current profile
              */
             @Override
@@ -96,7 +94,6 @@ public class EditProfile extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             /**
              * This method edits the information given by the user
-             *
              * @param v view for edit user information details
              */
             @Override
@@ -128,7 +125,6 @@ public class EditProfile extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     /**
                      * Exception Method
-                     *
                      * @param e
                      */
                     @Override
@@ -150,7 +146,6 @@ public class EditProfile extends AppCompatActivity {
 
     /**
      * This method gets image data to use in profile
-     *
      * @param requestCode
      * @param resultCode
      * @param data
@@ -170,7 +165,6 @@ public class EditProfile extends AppCompatActivity {
 
     /**
      * Method to upload image to firebase storage
-     *
      * @param imageUri image file
      */
 
@@ -179,7 +173,7 @@ public class EditProfile extends AppCompatActivity {
         final StorageReference fileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             /**
-             * Method  to load image selectioned by user
+             * Method  to load image selected by user
              * @param taskSnapshot
              */
             @Override

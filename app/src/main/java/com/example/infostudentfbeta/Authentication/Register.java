@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Class that contains methods for user registration
+ * Class that contains methods for user registration.
  */
 public class Register extends AppCompatActivity {
 
@@ -46,7 +46,7 @@ public class Register extends AppCompatActivity {
     String userID;
 
     /**
-     * Method to register a user and save it on firebase
+     * Method to register a user and save it on firebase.
      * @param savedInstanceState
      */
     @Override

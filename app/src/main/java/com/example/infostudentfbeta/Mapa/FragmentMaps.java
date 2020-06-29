@@ -165,7 +165,7 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
 
         LatLng DepartamentoIngenieriaCivilAgricola = new LatLng(4.633556, -74.083997);
 
-        LatLng DiseñoGrafico = new LatLng(4.633289, -74.083207);
+        LatLng DisenoGrafico = new LatLng(4.633289, -74.083207);
 
         LatLng ConservatorioMusica = new LatLng(4.635764, -74.081283);
 
@@ -257,7 +257,7 @@ public class FragmentMaps extends SupportMapFragment implements OnMapReadyCallba
         mgooglemap.addMarker(new MarkerOptions().position(DepartamentoGeociencias).title("Edificio Manuel Ancizar. Departamento de Geociencias").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_departamentogeociencias)));
 
-        mgooglemap.addMarker(new MarkerOptions().position(DiseñoGrafico).title("Edificio Francisco de Paula Santander. Diseño Gráfico").snippet("Determinar ruta")
+        mgooglemap.addMarker(new MarkerOptions().position(DisenoGrafico).title("Edificio Francisco de Paula Santander. Diseño Gráfico").snippet("Determinar ruta")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_disenografico)));
 
         mgooglemap.addMarker(new MarkerOptions().position(DepartamentoIngenieriaCivilAgricola).title("Edificio Antonio Nariño. Departamento de Ingeniería civil y Agrícola").snippet("Determinar ruta")
