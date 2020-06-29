@@ -22,14 +22,14 @@ public class UnFragment  extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_un,container,false);
 
-        b=v.findViewById(R.id.boton_prueba);
+        /*b=v.findViewById(R.id.boton_prueba);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), MapslocationActivity.class));
             }
-        });
+        });*/
 
 
         return v;

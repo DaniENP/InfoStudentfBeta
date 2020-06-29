@@ -20,11 +20,6 @@
                 android:layout_marginBottom="0dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/conoceun_web"/>
-
-            <Button
-                android:id="@+id/boton_prueba"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </ScrollView>
