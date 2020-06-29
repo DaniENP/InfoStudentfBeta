@@ -72,7 +72,6 @@ public class MainMenu extends AppCompatActivity {
         bottomnav.setSelectedItemId(R.id.nav_profile);
         bottomnav.setOnNavigationItemSelectedListener(navlistener);
 
-        phone = findViewById(R.id.profilePhone);
         fullName = findViewById(R.id.profileName);
         email = findViewById(R.id.profileEmail);
         resetPassLocal = findViewById(R.id.resetPasswordLocal);
@@ -209,7 +208,6 @@ public class MainMenu extends AppCompatActivity {
                 Intent i = new Intent(v.getContext(), EditProfile.class);
                 i.putExtra("fullName", fullName.getText().toString());
                 i.putExtra("email", email.getText().toString());
-                i.putExtra("phone", phone.getText().toString());
                 startActivity(i);
 //
 

@@ -47,23 +47,6 @@
         app:layout_constraintVertical_bias="0.784" />
 
     <EditText
-        android:id="@+id/phone"
-        android:layout_width="251dp"
-        android:layout_height="42dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="Telefono"
-        android:inputType="textPhonetic"
-        android:textColor="#EFDEDE"
-        android:textColorHint="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintBottom_toTopOf="@+id/RegisterBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
-
-    <EditText
         android:id="@+id/Email"
         android:layout_width="252dp"
         android:layout_height="38dp"
@@ -84,18 +67,19 @@
         android:id="@+id/password"
         android:layout_width="253dp"
         android:layout_height="40dp"
+        android:layout_marginTop="416dp"
         android:ems="10"
         android:hint="Contraseña"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textColorHint="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintBottom_toTopOf="@+id/phone"
+        app:layout_constraintBottom_toTopOf="@+id/RegisterBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/fullName"
@@ -112,7 +96,7 @@
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935" />
+        app:layout_constraintVertical_bias="0.939" />
 
     <TextView
         android:id="@+id/textView"
